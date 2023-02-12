@@ -8,8 +8,6 @@ import Category from "./components/Categorys/Category";
 import React, { useState } from "react";
 import MovieInfo from "./components/MovieInfo";
 
-
-
 const movieList = [
   {
     name: "Pineapple Express",
@@ -33,7 +31,7 @@ const movieList = [
       "Stoner Dale Denton's (Seth Rogen) enjoyment of a rare strain of marijuana may prove fatal when he drops his roach in a panic after witnessing a murder. Upon learning that the fancy weed can be traced back to them, Dale and his dealer (James Franco) go on the lam, with a dangerous drug lord (Gary Cole) and crooked cop (Rosie Perez) hot on their heels.",
     link: "https://en.wikipedia.org/wiki/Pineapple_Express_(film)",
     likes: 0,
-    review: "This is a review"
+    review: "This is a review",
   },
   {
     name: "HalfBaked",
@@ -73,7 +71,7 @@ const movieList = [
     link: "https://en.wikipedia.org/wiki/Old_School_(film)",
     runtime: "90 minutes",
     likes: 0,
-    review: ""
+    review: "",
   },
   {
     name: "Wedding Crashers",
@@ -96,7 +94,7 @@ const movieList = [
     link: "https://en.wikipedia.org/wiki/Wedding_Crashers",
     runtime: "119 minutes",
     likes: 0,
-    review: ""
+    review: "",
   },
   {
     name: "Die Hard",
@@ -118,7 +116,7 @@ const movieList = [
     link: "https://en.wikipedia.org/wiki/Die_Hard",
     runtime: "132 minutes",
     likes: 0,
-    review: ""
+    review: "",
   },
   {
     name: "A Nightmare on Elm Street",
@@ -141,7 +139,7 @@ const movieList = [
     link: "https://en.wikipedia.org/wiki/A_Nightmare_on_Elm_Street",
     runtime: "91 minutes",
     likes: 0,
-    review: ""
+    review: "",
   },
   {
     name: "A Star is Born",
@@ -170,7 +168,7 @@ const movieList = [
     link: "https://en.wikipedia.org/wiki/A_Star_Is_Born_(2018_film)",
     runtime: "136 minutes",
     likes: 0,
-    review: ""
+    review: "",
   },
 ];
 
@@ -196,10 +194,15 @@ movieList.sort(dynamicSort("name"));
 
 function App() {
   const [admin, setAdmin] = useState("Little123");
-  const [adminPass, setAdminPass] = useState("Password")
+  const [adminPass, setAdminPass] = useState("Password");
   const [showInfo, setShowInfo] = useState(false);
   const [movie, setMovie] = useState("");
-  const [categories, setCategories] = useState(["Comedy", "Action", "Horror", "Drama"]);
+  const [categories, setCategories] = useState([
+    "Comedy",
+    "Action",
+    "Horror",
+    "Drama",
+  ]);
   const [moviesList, setMoviesList] = useState([
     {
       name: "Pineapple Express",
@@ -223,7 +226,7 @@ function App() {
         "Stoner Dale Denton's (Seth Rogen) enjoyment of a rare strain of marijuana may prove fatal when he drops his roach in a panic after witnessing a murder. Upon learning that the fancy weed can be traced back to them, Dale and his dealer (James Franco) go on the lam, with a dangerous drug lord (Gary Cole) and crooked cop (Rosie Perez) hot on their heels.",
       link: "https://en.wikipedia.org/wiki/Pineapple_Express_(film)",
       likes: 0,
-      review: "This is a review"
+      review: "This is a review",
     },
     {
       name: "HalfBaked",
@@ -247,7 +250,7 @@ function App() {
         "When a member of their crew gets arrested for killing a New York City police horse by feeding it junk food, three slackin' stoners are forced to get off their butts and raise bail by selling pot stolen from a pharmaceutical lab. It's a risky plan but, hey, these are stand-up guys who would do anything to help out a friend in need.",
       link: "https://en.wikipedia.org/wiki/Half_Baked",
       likes: 0,
-      review: ""
+      review: "",
     },
     {
       name: "Old School",
@@ -264,7 +267,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/Old_School_(film)",
       runtime: "90 minutes",
       likes: 0,
-      review: ""
+      review: "",
     },
     {
       name: "Wedding Crashers",
@@ -287,7 +290,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/Wedding_Crashers",
       runtime: "119 minutes",
       likes: 0,
-      review: ""
+      review: "",
     },
     {
       name: "Die Hard",
@@ -309,7 +312,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/Die_Hard",
       runtime: "132 minutes",
       likes: 0,
-      review: ""
+      review: "",
     },
     {
       name: "A Nightmare on Elm Street",
@@ -332,7 +335,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/A_Nightmare_on_Elm_Street",
       runtime: "91 minutes",
       likes: 0,
-      review: ""
+      review: "",
     },
     {
       name: "A Star is Born",
@@ -361,18 +364,15 @@ function App() {
       link: "https://en.wikipedia.org/wiki/A_Star_Is_Born_(2018_film)",
       runtime: "136 minutes",
       likes: 0,
-      review: ""
-    }
-  ])
-  
-  
+      review: "",
+    },
+  ]);
 
- 
-  
   // handles movie click to display data
   function handleMovieClick(data) {
     setMovie(data);
     toShowInfo();
+    window.scrollTo(0,0)
   }
   //changes state between true and false
   function toShowInfo() {
@@ -380,14 +380,13 @@ function App() {
   }
 
   return (
-    
     <div className="App">
       <Header admin={admin} adminPass={adminPass} />
       <CategoryList list={categories} />
       <h2 className="categoryTitle">A-Z</h2>
       <Container className="movieContainer">
         <div className="movieRow">
-          {movieList.map((movie, index) => (
+          {moviesList.map((movie, index) => (
             <MovieCard
               onMovieClick={() => handleMovieClick(movie)}
               key={index}
@@ -399,10 +398,10 @@ function App() {
       {categories.map((category, index) => {
         return (
           <Category
-            onMovieClick={movie => handleMovieClick(movie)}
+            onMovieClick={(movie) => handleMovieClick(movie)}
             name={category}
             key={index}
-            list={movieList}
+            list={moviesList}
             id={category}
           />
         );
@@ -413,11 +412,9 @@ function App() {
         <div></div>
       )}
     </div>
-    
-    
   );
 }
 
 export default App;
 
-// MovieInfo will not read correct movie when clicked in category. figure that shit out
+// setting up Login page

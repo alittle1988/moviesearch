@@ -13,8 +13,8 @@ export default function MovieInfo(props) {
           </h2>
         </Col>
         <Col>
-        <h2>Summary</h2>
-          <p>{movie.summary}</p>
+        <h2>Review</h2>
+          <p>{movie.review}</p>
         </Col>
         <Col>
           <h3 className="text-end" onClick={onMovieClick}>X</h3>

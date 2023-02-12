@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 export default function Login(props) {
   const [adminInput, setAdminInput] = useState("");
   const [adminPassInput, setAdminPassInput] = useState("");
-  const {onShowLoginClick} = props
+  const {onShowLoginClick, admin, adminPass} = props
 
   function handleAdminInputChange(e) {
     setAdminInput(e.target.value)
@@ -21,6 +21,11 @@ export default function Login(props) {
     
     function handleSubmit(event) {
         event.preventDefault();
+        if(adminInput === admin && adminPass === adminPassInput) {
+          console.log("shit worked");
+        } else {
+          alert("Username and/or Password are incorrect please try again")
+        }
 
     }
   return (
