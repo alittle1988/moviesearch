@@ -23,11 +23,11 @@ export default function MovieInfo(props) {
       <Row >
         <Col>
         <h4>Cast</h4>
-        <p>{String(movie.cast)}</p>
+        <p>{movie.cast.join(", ")}</p>
         <h4>Director</h4>
         <p>{movie.director}</p>
         <h4>Screenplay</h4>
-        {movie.screenplay.length > 0 ? <p>{String(movie.screenplay)}</p> : <p>N/A</p>}
+        {movie.screenplay.length > 0 ? <p>{movie.screenplay.join(", ")}</p> : <p>N/A</p>}
         </Col>
         <Col>
             <h4>Release Date</h4>

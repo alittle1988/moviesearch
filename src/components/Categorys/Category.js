@@ -3,8 +3,6 @@ import MovieCard from "../MovieCard.js";
 export default function Category(props) {
   const { name, list, onMovieClick } = props;
 
-
-
   return (
     <>
       <h2
@@ -16,21 +14,20 @@ export default function Category(props) {
       </h2>
       <Container className="movieContainer">
         <div className="movieRow">
-        {list.map((movie, index) => {
+          {list.map((movie, index) => {
             if (movie.category === name.toLowerCase()) {
               return (
                 <MovieCard
-                  onMovieClick={() => onMovieClick(movie)}
+                  onMovieClick={movie => onMovieClick(movie)}
                   movie={movie}
                   key={index}
                 ></MovieCard>
               );
-            }
-          })}
+            } 
+          }
+          )}
         </div>
       </Container>
-      
     </>
   );
 }
-
