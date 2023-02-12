@@ -1,4 +1,5 @@
 {
+  "homepage": "https://alittle1988.github.io/moviesearch",
   "name": "moviesearch",
   "version": "0.1.0",
   "private": true,
@@ -39,7 +40,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "homepage": "https://alittle1988.github.io/moviesearch"
+    ]
   }
 }
