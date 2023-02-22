@@ -7,8 +7,10 @@ import MovieCard from "./components/MovieCard";
 import Category from "./components/Categorys/Category";
 import React, { useState } from "react";
 import MovieInfo from "./components/MovieInfo";
+import AdminPage from "./AdminPages/AdminPage";
+import AddTitle from "./AdminPages/AddTitle";
 
-const movieList = [
+/*const movieList = [
   {
     name: "Pineapple Express",
     img: "https://upload.wikimedia.org/wikipedia/en/c/ca/Pineapple_Express_Poster.jpg",
@@ -170,7 +172,7 @@ const movieList = [
     likes: 0,
     review: "",
   },
-];
+];*/
 
 // sorting function
 function dynamicSort(property) {
@@ -190,11 +192,12 @@ function dynamicSort(property) {
   };
 }
 // sorts list in alphabetical order
-movieList.sort(dynamicSort("name"));
+//movieList.sort(dynamicSort("name"));
 
 function App() {
-  const [admin, setAdmin] = useState("Little123");
+  const [admin, setAdmin] = useState("admin123");
   const [adminPass, setAdminPass] = useState("Password");
+  const [loggedin, setLoggedin] = useState(true)
   const [showInfo, setShowInfo] = useState(false);
   const [movie, setMovie] = useState("");
   const [categories, setCategories] = useState([
@@ -250,7 +253,7 @@ function App() {
         "When a member of their crew gets arrested for killing a New York City police horse by feeding it junk food, three slackin' stoners are forced to get off their butts and raise bail by selling pot stolen from a pharmaceutical lab. It's a risky plan but, hey, these are stand-up guys who would do anything to help out a friend in need.",
       link: "https://en.wikipedia.org/wiki/Half_Baked",
       likes: 0,
-      review: "",
+      review: "This is a Review",
     },
     {
       name: "Old School",
@@ -267,7 +270,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/Old_School_(film)",
       runtime: "90 minutes",
       likes: 0,
-      review: "",
+      review: "This is a Review",
     },
     {
       name: "Wedding Crashers",
@@ -290,7 +293,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/Wedding_Crashers",
       runtime: "119 minutes",
       likes: 0,
-      review: "",
+      review: "This is a Review",
     },
     {
       name: "Die Hard",
@@ -312,7 +315,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/Die_Hard",
       runtime: "132 minutes",
       likes: 0,
-      review: "",
+      review: "This is a Review",
     },
     {
       name: "A Nightmare on Elm Street",
@@ -335,7 +338,7 @@ function App() {
       link: "https://en.wikipedia.org/wiki/A_Nightmare_on_Elm_Street",
       runtime: "91 minutes",
       likes: 0,
-      review: "",
+      review: "This is a Review",
     },
     {
       name: "A Star is Born",
@@ -364,10 +367,19 @@ function App() {
       link: "https://en.wikipedia.org/wiki/A_Star_Is_Born_(2018_film)",
       runtime: "136 minutes",
       likes: 0,
-      review: "",
+      review: "This is a Review",
     },
   ]);
-
+  // handle login
+  function login(details) {
+    if(admin === details.userName && adminPass === details.password) {
+      console.log("logged in")
+      setLoggedin(true)
+    } else {
+      console.log("shits wrong")
+    }
+  }
+ console.log(moviesList)
   // handles movie click to display data
   function handleMovieClick(data) {
     setMovie(data);
@@ -379,9 +391,18 @@ function App() {
     setShowInfo(!showInfo);
   }
 
+  // add movie title
+  function handleAddMovieTitle(e, movieDetails) {
+    e.preventDefalut()
+    let newList = moviesList;
+    newList.push(movie)
+    setMoviesList(newList)
+  }
+
   return (
     <div className="App">
-      <Header admin={admin} adminPass={adminPass} />
+      <Header login={login} />
+      {loggedin === true ? <AdminPage onHandleAddMovieTitle={handleAddMovieTitle} /> : <div></div>}
       <CategoryList list={categories} />
       <h2 className="categoryTitle">A-Z</h2>
       <Container className="movieContainer">

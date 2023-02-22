@@ -145,3 +145,16 @@ html {
   cursor: pointer;
 }
 
+/* Admin Page */
+
+.adminList {
+  color: white;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 15px;
+}
+
+.adminList li {
+  cursor: pointer;
+}

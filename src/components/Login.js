@@ -1,33 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
 export default function Login(props) {
-  const [adminInput, setAdminInput] = useState("");
-  const [adminPassInput, setAdminPassInput] = useState("");
-  const {onShowLoginClick, admin, adminPass} = props
+  const [details, setDetails] = useState({userName: "", password: ""});
+  const {onShowLoginClick, login} = props;
 
-  function handleAdminInputChange(e) {
-    setAdminInput(e.target.value)
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    login(details)
+    console.log(details)
   }
-  function handleAdminPassInputChange(e) {
-    setAdminPassInput(e.target.value)
-  }
-
-
-    // validates password 
-    function validateForm() {
-        return adminInput.length && adminPassInput.length > 0;
-    }
-    
-    function handleSubmit(event) {
-        event.preventDefault();
-        if(adminInput === admin && adminPass === adminPassInput) {
-          console.log("shit worked");
-        } else {
-          alert("Username and/or Password are incorrect please try again")
-        }
-
-    }
   return (
     <>
     <div className="Login">
@@ -39,7 +22,9 @@ export default function Login(props) {
             autoFocus
             placeholder="UserName"
             style={{ width: 250 }}
-            onChange={handleAdminInputChange}
+            onChange={e => {setDetails({...details, userName: e.target.value})}}
+            value={details.userName}
+            
             
             
           ></Form.Control>
@@ -51,12 +36,14 @@ export default function Login(props) {
             type="password"
             placeholder="Password"
             style={{ width: 250}}
-            onChange={handleAdminPassInputChange}
+            onChange={e => {setDetails({...details, password: e.target.value})}}
+            value={details.password}
+            
             
            
           ></Form.Control>
         </Form.Group>
-        <Button style={{marginTop: 15}} type="submit" disabled={!validateForm()}>Login</Button>
+        <Button style={{marginTop: 15}} type="submit">Login</Button>
         
       </Form>
     </div>
