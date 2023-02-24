@@ -8,7 +8,7 @@ import Category from "./components/Categorys/Category";
 import React, { useState } from "react";
 import MovieInfo from "./components/MovieInfo";
 import AdminPage from "./AdminPages/AdminPage";
-import AddTitle from "./AdminPages/AddTitle";
+
 
 /*const movieList = [
   {

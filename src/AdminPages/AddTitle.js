@@ -18,7 +18,7 @@ function AddTitle(props) {
     likes:0,
     review:""
   });
-  const {moviesList, addMovieTitle} = props;
+  const {addMovieTitle} = props;
   console.log(movieDetails)
 
   function addTheTitle(movie) {
@@ -101,7 +101,7 @@ function AddTitle(props) {
         <Form.Label></Form.Label>
         <Form.Control onChange={e => {setMovieDetails({...movieDetails, review:e.target.value })}} value={movieDetails.review} type="text" placeholder="Movie Review" />
       </Form.Group>
-      <Button onClick={() => addMovieTitle(movieDetails)} variant="primary" type="button" style={{marginTop: 20}}>Submit</Button>
+      <Button onClick={() => addTheTitle(movieDetails)} variant="primary" type="button" style={{marginTop: 20}}>Submit</Button>
     </Form>
   </div>;
 }
