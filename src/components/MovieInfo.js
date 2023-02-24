@@ -2,41 +2,50 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 export default function MovieInfo(props) {
   const { movie, onMovieClick } = props;
-  
+
+  function splitArray(param) {
+    let array = param.split(", ");
+    array = array.join(", ")
+    return array
+  }
+
+ 
   return (
     <Container className="movieInfo-wrapper">
       <Row>
-        <Col>
+        <Col >
           <img src={movie.img} alt={`${movie.name} movie Cover`} />
           <h2>
             <a href={movie.link}>{movie.name}</a>
           </h2>
         </Col>
-        <Col>
+        <Col sm={(7)}>
         <h2>Review</h2>
           <p>{movie.review}</p>
         </Col>
-        <Col>
+        <Col sm={1}>
           <h3 className="text-end" onClick={onMovieClick}>X</h3>
         </Col>
       </Row>
       <Row >
         <Col>
-        <h4>Cast</h4>
-        <p>{movie.cast.join(", ")}</p>
-        <h4>Director</h4>
-        <p>{movie.director}</p>
-        <h4>Screenplay</h4>
-        {movie.screenplay.length > 0 ? <p>{movie.screenplay.join(", ")}</p> : <p>N/A</p>}
+        <h4>Cast:</h4>
+        <p>{splitArray(movie.cast)}</p>
+        <h4>Producers:</h4>
+        <p>{splitArray(movie.producers)}</p>
+        <h4>Director:</h4>
+        <p>{splitArray(movie.director)}</p>
+        <h4>Screenplay:</h4>
+        <p>{splitArray(movie.screenplay)}</p>
         </Col>
         <Col>
-            <h4>Release Date</h4>
+            <h4>Release Date:</h4>
             <p>{movie.releaseDate}</p>
-            <h4>Runtime</h4>
+            <h4>Runtime:</h4>
             <p>{movie.runtime}</p>
-            <h4>Budget</h4>
+            <h4>Budget:</h4>
             <p>{movie.budget}</p>
-            <h4>Box Office Sales</h4>
+            <h4>Box Office Sales:</h4>
             <p>{movie.boxOffice}</p>
         </Col>
       </Row>

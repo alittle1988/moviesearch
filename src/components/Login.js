@@ -9,7 +9,7 @@ export default function Login(props) {
   function handleSubmit(e) {
     e.preventDefault()
     login(details)
-    console.log(details)
+    
   }
   return (
     <>

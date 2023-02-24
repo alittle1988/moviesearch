@@ -21,18 +21,37 @@ function AddTitle(props) {
   const {moviesList, addMovieTitle} = props;
   console.log(movieDetails)
 
-  function addMovie(e) {
-    e.preventDefalut()
-    console.log("working")
-    //addMovieTitle(movieDetails)
+  function addTheTitle(movie) {
+    addMovieTitle(movie)
+    alert("Movie has been added")
+    setMovieDetails({
+      name:"",
+      category:"",
+      director:"",
+      screenplay:"",
+      producers:"",
+      cast:[],
+      releaseDate:"",
+      runtime:"",
+      budget:"",
+      boxOffice:"",
+      summary:"",
+      link:"",
+      likes:0,
+      review:""
+    })
   }
   
   
   return <div className="addTitle">
-    <Form onSubmit={(e) => addMovieTitle(movieDetails)}>
+    <Form>
       <Form.Group>
-        <Form.Label>Moive Title</Form.Label>
-        <Form.Control onChange={e => {setMovieDetails({...movieDetails, name:e.target.value })}} value={movieDetails.name} type="text" placeholder="Movie Title" />
+        <Form.Label style={{color: "white", marginLeft: 50}}>Moive Info</Form.Label>
+        <Form.Control onChange={e => {setMovieDetails({...movieDetails, name:e.target.value })}} value={movieDetails.name} type="text" placeholder="Title" />
+      </Form.Group>
+      <Form.Label></Form.Label>
+      <Form.Group>
+        <Form.Control onChange={e => {setMovieDetails({...movieDetails, img:e.target.value })}} value={movieDetails.img} type="text" placeholder="Image" />
       </Form.Group>
       <Form.Group>
         <Form.Label></Form.Label>
@@ -82,7 +101,7 @@ function AddTitle(props) {
         <Form.Label></Form.Label>
         <Form.Control onChange={e => {setMovieDetails({...movieDetails, review:e.target.value })}} value={movieDetails.review} type="text" placeholder="Movie Review" />
       </Form.Group>
-      <Button variant="primary" type="submit" style={{marginTop: 20}}>Submit</Button>
+      <Button onClick={() => addMovieTitle(movieDetails)} variant="primary" type="button" style={{marginTop: 20}}>Submit</Button>
     </Form>
   </div>;
 }

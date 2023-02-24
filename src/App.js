@@ -191,13 +191,13 @@ function dynamicSort(property) {
     }
   };
 }
-// sorts list in alphabetical order
+// sorts lists in alphabetical order
 //movieList.sort(dynamicSort("name"));
 
 function App() {
   const [admin, setAdmin] = useState("admin123");
   const [adminPass, setAdminPass] = useState("Password");
-  const [loggedin, setLoggedin] = useState(true)
+  const [loggedin, setLoggedin] = useState(false)
   const [showInfo, setShowInfo] = useState(false);
   const [movie, setMovie] = useState("");
   const [categories, setCategories] = useState([
@@ -212,15 +212,11 @@ function App() {
       img: "https://upload.wikimedia.org/wikipedia/en/c/ca/Pineapple_Express_Poster.jpg",
       category: "comedy",
       director: "David Gordon Green",
-      screenplay: ["Seth Rogan", "Evan Goldberg"],
-      producers: ["Judd Apatow", "Shauna Robertson"],
-      cast: [
-        "Seth Rogan",
-        "James Franco",
-        "Gary Cole",
-        "Rosi Perez",
-        "Danny McBride",
-      ],
+      screenplay: "Seth Rogan, Evan Goldberg",
+      producers: "Judd Apatow, Shauna Robertson",
+      cast: 
+        "Seth Rogan, James Franco, Gary Cole, Rosi Perez, Danny McBride"
+      ,
       releaseDate: "August 6, 2008",
       runtime: "112 minutes",
       budget: "$26 million",
@@ -237,14 +233,8 @@ function App() {
       category: "comedy",
       director: "Tamara Davis",
       screenplay: "",
-      producers: ["Robert Simonds"],
-      cast: [
-        "Dave Chappelle",
-        "Jim Breuer",
-        "Harland Williams",
-        "Guillermo Diaz",
-        "Clarence Williams III",
-      ],
+      producers: "Robert Simonds",
+      cast: "Dave Chappellex Jim Breuer, Harland Williams, Guillermo Diaz, Clarence Williams III",
       releaseDate: "January 16, 1988",
       runtime: "82 minutes",
       budget: "$8 million",
@@ -260,9 +250,9 @@ function App() {
       img: "https://upload.wikimedia.org/wikipedia/en/2/21/Old_s_poster.jpg",
       category: "comedy",
       director: "Todd Phillips",
-      screenplay: ["Todd Phillips", "Scot Armstrong"],
-      producers: ["Daniel Goldberg", "Joe Medjuck", "Todd Phillips"],
-      cast: ["Luke Wilson", "Will Ferrell", "Vince Vaughn", "Jeremy Piven"],
+      screenplay: "Todd Phillips, Scot Armstrong",
+      producers: "Daniel Goldberg, Joe Medjuck, Todd Phillips",
+      cast: "Luke Wilson, Will Ferrell, Vince Vaughn, Jeremy Piven",
       releaseDate: "February 21, 2003",
       budget: "$ 24 million",
       boxOffice: "$86.7 million",
@@ -276,16 +266,10 @@ function App() {
       name: "Wedding Crashers",
       img: "https://upload.wikimedia.org/wikipedia/en/3/3e/Wedding_crashers_poster.jpg",
       category: "comedy",
-      director: ["David Dobkin"],
-      screenplay: [],
-      producers: ["Peter Abrams", "Robert L. Levy", "andrew Panay"],
-      cast: [
-        "Owen Wilson",
-        "Vince Vaughn",
-        "Christopher Walken",
-        "Rachel McAdams",
-        "Isla Fisher",
-      ],
+      director: "David Dobkin",
+      screenplay: "",
+      producers: "Peter Abrams, Robert L. Levy, andrew Panay",
+      cast: "Owen Wilson, Vince Vaughn, Christoper Walken, Rachel McAdams, Isla Fisher",
       releaseDate: "July 4, 2005",
       budget: "$40 million",
       boxOffice: "$288.5 million",
@@ -299,15 +283,10 @@ function App() {
       name: "Die Hard",
       img: "https://upload.wikimedia.org/wikipedia/en/c/ca/Die_Hard_%281988_film%29_poster.jpg",
       category: "action",
-      director: ["John McTiernan"],
-      screenplay: ["Jeb Stuart", "Steven E. de Souza"],
-      producers: ["Lawrence Gordon", "Joel Silver"],
-      cast: [
-        "Bruce Willis",
-        "Alan Rickman",
-        "Alexander Godunov",
-        "Bonnie Bedelia",
-      ],
+      director: "John McTiernan",
+      screenplay: "Jeb Stuart, Steven E. de Souza",
+      producers: "Lawrence Gordon, Joel Silver",
+      cast: "Bruce Willis, Alan Rickman, Alexander Godunov, Bonnie Bedelia",
       releaseDate: "July 12, 1988",
       budget: "$25-35 million",
       boxOffice: "$138.8-141.5 million",
@@ -321,16 +300,10 @@ function App() {
       name: "A Nightmare on Elm Street",
       img: "https://upload.wikimedia.org/wikipedia/en/f/fa/A_Nightmare_on_Elm_Street_%281984%29_theatrical_poster.jpg",
       category: "horror",
-      director: ["Wes Craven"],
-      screenplay: [],
-      producers: ["Robert Shaye"],
-      cast: [
-        "John Saxon",
-        "Ronee Blakley",
-        "Heather Langenkamp",
-        "amanda Wyss",
-        "Nick Corri",
-      ],
+      director: "Wes Craven",
+      screenplay: "",
+      producers: "Robert Shaye",
+      cast: "John Saxon, Ronee Blakley, Heather Langenkamp, amanda Wyss, Nick Corri",
       releaseDate: "November 9, 1984",
       budget: "1.1 million",
       boxOffice: "57 million",
@@ -344,22 +317,10 @@ function App() {
       name: "A Star is Born",
       img: "https://upload.wikimedia.org/wikipedia/en/3/39/A_Star_is_Born.png",
       category: "drama",
-      director: ["Bradley Cooper"],
-      screenplay: ["Eric Roth", "Bradley Cooper", "Will Fetters"],
-      producers: [
-        "Bill Gerber",
-        "Jon Peters",
-        "Bradley Cooper",
-        "Todd Phillips",
-        "Lynette Howell Taylor",
-      ],
-      cast: [
-        "Bradley Cooper",
-        "Lady Gaga",
-        "Andrew Dice Clay",
-        "Dave Chappelle",
-        "Sam Elliott",
-      ],
+      director: "Bradley Cooper",
+      screenplay: "Eric Roth, Bradley Cooper, Will Fetters",
+      producers: "Bill Gerber, Jon Peters, Bradley Cooper, Todd Phillips,  Lynette Howell Taylor",
+      cast: "Bradley Cooper, Lady Gaga, Andrew Dice Clay, Dave Chappelle,v Sam Elliott",
       releaseDate: "August 31, 2018",
       budget: "36 million",
       boxOffice: "436.2 million",
@@ -373,32 +334,31 @@ function App() {
   // handle login
   function login(details) {
     if(admin === details.userName && adminPass === details.password) {
-      console.log("logged in")
+      
       setLoggedin(true)
     } else {
       console.log("shits wrong")
     }
   }
- console.log(moviesList)
+
   // handles movie click to display data
   function handleMovieClick(data) {
     setMovie(data);
     toShowInfo();
     window.scrollTo(0,0)
   }
-  //changes state between true and false
+  //changes showInfo state between true and false
   function toShowInfo() {
     setShowInfo(!showInfo);
   }
 
   // add movie title
-  function handleAddMovieTitle(e, movieDetails) {
-    e.preventDefalut()
-    let newList = moviesList;
-    newList.push(movie)
-    setMoviesList(newList)
+  function handleAddMovieTitle(movie) {
+    
+    console.log(movie);
+    setMoviesList([...moviesList, movie]);
   }
-
+  console.log(moviesList)
   return (
     <div className="App">
       <Header login={login} />
