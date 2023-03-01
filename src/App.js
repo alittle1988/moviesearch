@@ -9,7 +9,6 @@ import React, { useState } from "react";
 import MovieInfo from "./components/MovieInfo";
 import AdminPage from "./AdminPages/AdminPage";
 
-
 // sorting function
 function dynamicSort(property) {
   var sortOrder = 1;
@@ -28,12 +27,16 @@ function dynamicSort(property) {
   };
 }
 // sorts lists in alphabetical order
-//movieList.sort(dynamicSort("name"));
+function sortList(list) {
+  let newList = list;
+  newList.sort(dynamicSort("name"));
+  return newList;
+}
 
 function App() {
   const [admin, setAdmin] = useState("admin123");
   const [adminPass, setAdminPass] = useState("Password");
-  const [loggedin, setLoggedin] = useState(false)
+  const [loggedin, setLoggedin] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
   const [movie, setMovie] = useState("");
   const [categories, setCategories] = useState([
@@ -50,9 +53,7 @@ function App() {
       director: "David Gordon Green",
       screenplay: "Seth Rogan, Evan Goldberg",
       producers: "Judd Apatow, Shauna Robertson",
-      cast: 
-        "Seth Rogan, James Franco, Gary Cole, Rosi Perez, Danny McBride"
-      ,
+      cast: "Seth Rogan, James Franco, Gary Cole, Rosi Perez, Danny McBride",
       releaseDate: "August 6, 2008",
       runtime: "112 minutes",
       budget: "$26 million",
@@ -155,7 +156,8 @@ function App() {
       category: "drama",
       director: "Bradley Cooper",
       screenplay: "Eric Roth, Bradley Cooper, Will Fetters",
-      producers: "Bill Gerber, Jon Peters, Bradley Cooper, Todd Phillips,  Lynette Howell Taylor",
+      producers:
+        "Bill Gerber, Jon Peters, Bradley Cooper, Todd Phillips,  Lynette Howell Taylor",
       cast: "Bradley Cooper, Lady Gaga, Andrew Dice Clay, Dave Chappelle,v Sam Elliott",
       releaseDate: "August 31, 2018",
       budget: "36 million",
@@ -167,21 +169,39 @@ function App() {
       review: "This is a Review",
     },
   ]);
+
+
+  
   // handle login
   function login(details) {
-    if(admin === details.userName && adminPass === details.password) {
-      
-      setLoggedin(true)
+    if (admin === details.userName && adminPass === details.password) {
+      setLoggedin(true);
     } else {
-      console.log("shits wrong")
+      console.log("shits wrong");
     }
   }
+
+  // sort list alphabetical order
+  sortList(moviesList);
 
   // handles movie click to display data
   function handleMovieClick(data) {
     setMovie(data);
     toShowInfo();
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
+  }
+  // handle add category
+  function handleAddCategory(category) {
+    setCategories([...categories, category]);
+  }
+  // handle remove category
+  function handleRemoveCategory(param) {
+    const data = categories.filter((category) => category !== param)
+    
+    setCategories(data)
+    
+   
+    
   }
   //changes showInfo state between true and false
   function toShowInfo() {
@@ -190,15 +210,34 @@ function App() {
 
   // add movie title
   function handleAddMovieTitle(movie) {
-    
-    console.log(movie);
     setMoviesList([...moviesList, movie]);
   }
-  console.log(moviesList)
+
+  // remove movie title
+  function handleRemoveMovieTitle(movie) {
+    const data = moviesList;
+    data.forEach((item) => {
+      if (item.name === movie) {
+        let index = data.indexOf(item);
+        console.log(index);
+      }
+    });
+  }
+
   return (
     <div className="App">
       <Header login={login} />
-      {loggedin === true ? <AdminPage onHandleAddMovieTitle={handleAddMovieTitle} /> : <div></div>}
+      {loggedin === true ? (
+        <AdminPage
+          onHandleAddMovieTitle={handleAddMovieTitle}
+          onHandleAddCategory={handleAddCategory}
+          onHandleRemoveMovieTitle={handleRemoveMovieTitle}
+          onHandleRemoveCategory={handleRemoveCategory}
+          categories={categories}
+        />
+      ) : (
+        <div></div>
+      )}
       <CategoryList list={categories} />
       <h2 className="categoryTitle">A-Z</h2>
       <Container className="movieContainer">

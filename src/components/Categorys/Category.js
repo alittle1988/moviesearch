@@ -23,7 +23,7 @@ export default function Category(props) {
                   key={index}
                 ></MovieCard>
               );
-            } 
+            }
           }
           )}
         </div>

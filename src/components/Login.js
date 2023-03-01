@@ -32,7 +32,6 @@ export default function Login(props) {
         <Form.Group>
           <Form.Label style={{ color: "white",paddingTop: 15 }}>Password </Form.Label>
           <Form.Control
-            autoFocus
             type="password"
             placeholder="Password"
             style={{ width: 250}}

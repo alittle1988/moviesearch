@@ -47,7 +47,7 @@ function AddTitle(props) {
     <Form>
       <Form.Group>
         <Form.Label style={{color: "white", marginLeft: 50}}>Moive Info</Form.Label>
-        <Form.Control onChange={e => {setMovieDetails({...movieDetails, name:e.target.value })}} value={movieDetails.name} type="text" placeholder="Title" />
+        <Form.Control onChange={e => {setMovieDetails({...movieDetails, name:e.target.value})}} value={movieDetails.name} type="text" placeholder="Title" />
       </Form.Group>
       <Form.Label></Form.Label>
       <Form.Group>
@@ -55,7 +55,7 @@ function AddTitle(props) {
       </Form.Group>
       <Form.Group>
         <Form.Label></Form.Label>
-        <Form.Control onChange={e => {setMovieDetails({...movieDetails, category:e.target.value })}} value={movieDetails.category} type="text" placeholder="Category" />
+        <Form.Control onChange={e => {setMovieDetails({...movieDetails, category:e.target.value.toLowerCase()  })}} value={movieDetails.category} type="text" placeholder="Category" />
       </Form.Group>
       <Form.Group>
         <Form.Label></Form.Label>

@@ -19,14 +19,17 @@ export default function MovieInfo(props) {
             <a href={movie.link}>{movie.name}</a>
           </h2>
         </Col>
-        <Col sm={(7)}>
-        <h2>Review</h2>
-          <p>{movie.review}</p>
-        </Col>
-        <Col sm={1}>
+        <Col>
           <h3 className="text-end" onClick={onMovieClick}>X</h3>
         </Col>
       </Row>
+      <Row>
+      <Col>
+        <h2>Review</h2>
+          <p>{movie.review}</p>
+        </Col>
+      </Row>
+      <hr></hr>
       <Row >
         <Col>
         <h4>Cast:</h4>
