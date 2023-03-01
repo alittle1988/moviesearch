@@ -170,8 +170,6 @@ function App() {
     },
   ]);
 
-
-  
   // handle login
   function login(details) {
     if (admin === details.userName && adminPass === details.password) {
@@ -196,12 +194,8 @@ function App() {
   }
   // handle remove category
   function handleRemoveCategory(param) {
-    const data = categories.filter((category) => category !== param)
-    
-    setCategories(data)
-    
-   
-    
+    const data = categories.filter((category) => category !== param);
+    setCategories(data);
   }
   //changes showInfo state between true and false
   function toShowInfo() {

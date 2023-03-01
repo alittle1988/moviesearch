@@ -12,7 +12,7 @@ function AdminPage(props) {
     onHandleAddCategory,
     onHandleRemoveMovieTitle,
     onHandleRemoveCategory,
-    categories
+    categories,
   } = props;
   return (
     <>
@@ -22,7 +22,9 @@ function AdminPage(props) {
             <li>
               <Link to="/addCategory">Add Category</Link>
             </li>
-            <li><Link to="/removeCategory">Remove Category</Link></li>
+            <li>
+              <Link to="/removeCategory">Remove Category</Link>
+            </li>
             <li>
               <Link to="/removeTitle">Remove Title</Link>
             </li>
@@ -30,7 +32,6 @@ function AdminPage(props) {
               <Link to="/addTitle">Add Title</Link>
             </li>
             <li>Edit Title</li>
-            
           </ul>
         </Row>
       </Container>
@@ -53,11 +54,14 @@ function AdminPage(props) {
           }
         />
         <Route
-        path="/removeCategory"
-        element={<RemoveCategory
-        onHandleRemoveCategory={onHandleRemoveCategory}
-        categories={categories}
-        ></RemoveCategory>} />
+          path="/removeCategory"
+          element={
+            <RemoveCategory
+              onHandleRemoveCategory={onHandleRemoveCategory}
+              categories={categories}
+            ></RemoveCategory>
+          }
+        />
       </Routes>
     </>
   );
