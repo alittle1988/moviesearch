@@ -71,7 +71,7 @@ function App() {
       director: "Tamara Davis",
       screenplay: "",
       producers: "Robert Simonds",
-      cast: "Dave Chappellex Jim Breuer, Harland Williams, Guillermo Diaz, Clarence Williams III",
+      cast: "Dave Chappelle Jim Breuer, Harland Williams, Guillermo Diaz, Clarence Williams III",
       releaseDate: "January 16, 1988",
       runtime: "82 minutes",
       budget: "$8 million",
@@ -208,15 +208,14 @@ function App() {
   }
 
   // remove movie title
-  function handleRemoveMovieTitle(movie) {
-    const data = moviesList;
-    data.forEach((item) => {
-      if (item.name === movie) {
-        let index = data.indexOf(item);
-        console.log(index);
-      }
-    });
+  function handleRemoveMovieTitle(title) {
+    
+    const data = moviesList.filter((movie) => movie.name.toLowerCase() !== title.toLowerCase())
+    console.log(data)
+    setMoviesList(data)
+    
   }
+  
 
   return (
     <div className="App">
@@ -228,6 +227,7 @@ function App() {
           onHandleRemoveMovieTitle={handleRemoveMovieTitle}
           onHandleRemoveCategory={handleRemoveCategory}
           categories={categories}
+          moviesList={moviesList}
         />
       ) : (
         <div></div>

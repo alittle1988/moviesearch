@@ -18,14 +18,24 @@ function AddTitle(props) {
     likes: 0,
     review: "",
   });
-  const { addMovieTitle } = props;
+  const { addMovieTitle, moviesList } = props;
   console.log(movieDetails);
 
   function addTheTitle(movie) {
+    let match = false;
+    moviesList.forEach((item) => {
+      if(item.name.toLowerCase() === movie.name.toLowerCase()) {
+        match = true;
+      }
+    })
+    if(match === true) {
+      return alert("This Movie has already been added, please check title!")
+    }
     addMovieTitle(movie);
     alert("Movie has been added");
     setMovieDetails({
       name: "",
+      img:"",
       category: "",
       director: "",
       screenplay: "",
@@ -51,7 +61,7 @@ function AddTitle(props) {
           </Form.Label>
           <Form.Control
             onChange={(e) => {
-              setMovieDetails({ ...movieDetails, name: e.target.value });
+              setMovieDetails({ ...movieDetails, name: e.target.value});
             }}
             value={movieDetails.name}
             type="text"

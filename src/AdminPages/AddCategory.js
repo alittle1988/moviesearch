@@ -3,11 +3,21 @@ import { Button, Form } from "react-bootstrap";
 
 function AddCategory(props) {
   const [newCategory, setNewCategory] = useState("");
-  const { onHandleAddCategory } = props;
+  const { onHandleAddCategory, categories } = props;
   console.log(newCategory);
   const addCategory = (category) => {
-    onHandleAddCategory(category);
-    setNewCategory("");
+    let match = false;
+    categories.forEach((item) => {
+      if(item.toLowerCase() === category.toLowerCase()) {
+        match = true; 
+      }
+    })
+    if(match === true) {
+      return alert("This Category has already been added!")
+    } else {
+        onHandleAddCategory(category);
+        setNewCategory("");
+    }
   };
 
   return (

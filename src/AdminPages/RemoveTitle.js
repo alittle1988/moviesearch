@@ -6,7 +6,7 @@ function RemoveTitle(props) {
   const { onHandleRemoveMovieTitle } = props;
 
   function removeTitleFunc(movie) {
-    onHandleRemoveMovieTitle();
+    onHandleRemoveMovieTitle(movie);
     setRemoveTitle("");
   }
   return (
