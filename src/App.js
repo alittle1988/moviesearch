@@ -217,10 +217,6 @@ function App() {
     
   }
 
-  //handle SearchBar click
-  function searchBarFunc() {
-    console.log("works")
-  }
   
 
   return (
@@ -238,7 +234,7 @@ function App() {
       ) : (
         <div></div>
       )}
-      <SearchBar moviesList={moviesList} onHandleSearchBarFunc={searchBarFunc} />
+      <SearchBar moviesList={moviesList}  onMovieClick={handleMovieClick} />
       <CategoryList list={categories} />
       <h2 className="categoryTitle">A-Z</h2>
       <Container className="movieContainer">

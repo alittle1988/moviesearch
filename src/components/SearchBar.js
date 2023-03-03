@@ -5,7 +5,7 @@ import Category from "./Categorys/Category";
 function SearchBar(props) {
   const [searchTitle, setSearchTitle] = useState("");
   const [searchList, setSearchList] = useState([]);
-  const { moviesList, searchBarFunc } = props;
+  const { moviesList, onMovieClick } = props;
 
   function searchTitleFunc(searchtext) {
     console.log(searchtext);
@@ -43,7 +43,7 @@ function SearchBar(props) {
           </Button>
         </Form.Group>
       </Form>
-      {searchList.length > 0  ? <Category name="search" list={searchList} /> : <div></div>}
+      {searchList.length > 0  ? <Category name="search" list={searchList} onMovieClick={onMovieClick}/> : <div></div>}
     </div>
   );
 }
