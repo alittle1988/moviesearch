@@ -41,12 +41,12 @@ function AdminPage(props) {
       <Routes>
         <Route path="/" element={<AdminPage />} />
         <Route
-          path="/addTitle"
-          element={<AddTitle moviesList={moviesList} addMovieTitle={onHandleAddMovieTitle} />}
-        />
-        <Route
           path="/addCategory"
           element={<AddCategory categories={categories} onHandleAddCategory={onHandleAddCategory} />}
+        />
+        <Route
+          path="/addTitle"
+          element={<AddTitle moviesList={moviesList} addMovieTitle={onHandleAddMovieTitle} />}
         />
         <Route
           path="/removeTitle"

@@ -29,18 +29,15 @@ function SearchBar(props) {
   return (
     <div className="searchBar">
       <Form>
-        <Form.Group style={{ display: "flex" }}>
+        <Form.Group style={{ display: "flex", justifyContent: "center" }}>
           <Form.Label></Form.Label>
           <Form.Control
             onChange={(e) => searchTitleFunc(e.target.value)}
             value={searchTitle}
             type="text"
             placeholder="Search"
-            style={{ width: 350 }}
+            style={{ width: "90%" }}
           ></Form.Control>
-          <Button type="button" style={{ marginLeft: 20 }}>
-            Search
-          </Button>
         </Form.Group>
       </Form>
       {searchList.length > 0  ? <Category name="search" list={searchList} onMovieClick={onMovieClick}/> : <div></div>}

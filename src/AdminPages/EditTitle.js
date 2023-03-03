@@ -10,7 +10,7 @@ function EditTitle(props) {
             <Form.Group>
                 <Form.Label style={{color: 'white'}}>Title to Edit</Form.Label>
                 <Form.Control type='text' placeholder='Title'></Form.Control>
-                <Button style={{margin: 20}}>Submit</Button>
+                <Button style={{marginTop: 20}}>Submit</Button>
             </Form.Group>
         </Form>
     </div>

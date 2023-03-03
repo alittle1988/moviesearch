@@ -10,6 +10,16 @@ export default function MovieInfo(props) {
     return array;
   }
 
+  function checkData(data) {
+    console.log(data)
+    
+    if(data.length > 0) {
+      return data
+    } else {
+      return "N/A"
+    }
+  }
+
   return (
     <Container className="movieInfo-wrapper">
       <Row>
@@ -30,30 +40,30 @@ export default function MovieInfo(props) {
       <Row>
         <Col>
           <h2>Review</h2>
-          <p>{movie.review}</p>
+          <p>{checkData(movie.review)}</p>
         </Col>
       </Row>
       <hr></hr>
       <Row>
         <Col>
           <h4>Cast:</h4>
-          <p>{splitArray(movie.cast)}</p>
+          <p>{checkData(movie.cast)}</p>
           <h4>Producers:</h4>
-          <p>{splitArray(movie.producers)}</p>
+          <p>{checkData(movie.producers)}</p>
           <h4>Director:</h4>
-          <p>{splitArray(movie.director)}</p>
+          <p>{checkData(movie.director)}</p>
           <h4>Screenplay:</h4>
-          <p>{splitArray(movie.screenplay)}</p>
+          <p>{checkData(movie.screenplay)}</p>
         </Col>
         <Col>
           <h4>Release Date:</h4>
-          <p>{movie.releaseDate}</p>
+          <p>{checkData(movie.releaseDate)}</p>
           <h4>Runtime:</h4>
-          <p>{movie.runtime}</p>
+          <p>{checkData(movie.runtime)}</p>
           <h4>Budget:</h4>
-          <p>{movie.budget}</p>
+          <p>{checkData(movie.budget)}</p>
           <h4>Box Office Sales:</h4>
-          <p>{movie.boxOffice}</p>
+          <p>{checkData(movie.boxOffice)}</p>
         </Col>
       </Row>
     </Container>

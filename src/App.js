@@ -63,7 +63,7 @@ function App() {
         "Stoner Dale Denton's (Seth Rogen) enjoyment of a rare strain of marijuana may prove fatal when he drops his roach in a panic after witnessing a murder. Upon learning that the fancy weed can be traced back to them, Dale and his dealer (James Franco) go on the lam, with a dangerous drug lord (Gary Cole) and crooked cop (Rosie Perez) hot on their heels.",
       link: "https://en.wikipedia.org/wiki/Pineapple_Express_(film)",
       likes: 0,
-      review: "This is a review",
+      review: "",
     },
     {
       name: "HalfBaked",
@@ -214,6 +214,11 @@ function App() {
     const data = moviesList.filter((movie) => movie.name.toLowerCase() !== title.toLowerCase())
     console.log(data)
     setMoviesList(data)
+    
+  }
+
+  // edit title
+  function handleEditTitleClick(title) {
     
   }
 
