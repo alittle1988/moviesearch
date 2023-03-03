@@ -13,14 +13,6 @@ function RemoveCategory(props) {
   }
   return (
     <div className="removeCategory">
-      {/*<Form>
-            <Form.Group>
-                <Form.Label style={{color: "white"}}>Category to remove.</Form.Label>
-                <Form.Control onChange={(e) => setRemoveCategory(e.target.value)} value={removeCategory} type='text' placeholder='Category'></Form.Control>
-                <Button type='button' variant='primary' onClick={() => removeCategoryFunc(removeCategory)} style={{marginTop: 20}}>Submit</Button>
-            </Form.Group>
-  </Form>*/}
-
       <Form.Select
         style={{ width: 250, marginLeft: 25, marginTop: 25 }}
         onChange={(e) => setRemoveCategory(e.target.value)}

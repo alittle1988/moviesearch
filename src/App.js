@@ -8,6 +8,7 @@ import Category from "./components/Categorys/Category";
 import React, { useState } from "react";
 import MovieInfo from "./components/MovieInfo";
 import AdminPage from "./AdminPages/AdminPage";
+import SearchBar from "./components/SearchBar";
 
 // sorting function
 function dynamicSort(property) {
@@ -36,7 +37,7 @@ function sortList(list) {
 function App() {
   const [admin, setAdmin] = useState("admin123");
   const [adminPass, setAdminPass] = useState("Password");
-  const [loggedin, setLoggedin] = useState(true);
+  const [loggedin, setLoggedin] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [movie, setMovie] = useState("");
   const [categories, setCategories] = useState([
@@ -215,6 +216,11 @@ function App() {
     setMoviesList(data)
     
   }
+
+  //handle SearchBar click
+  function searchBarFunc() {
+    console.log("works")
+  }
   
 
   return (
@@ -232,6 +238,7 @@ function App() {
       ) : (
         <div></div>
       )}
+      <SearchBar moviesList={moviesList} onHandleSearchBarFunc={searchBarFunc} />
       <CategoryList list={categories} />
       <h2 className="categoryTitle">A-Z</h2>
       <Container className="movieContainer">

@@ -165,3 +165,10 @@ html {
 .adminList li {
   cursor: pointer;
 }
+
+/* Search Bar */
+
+.searchBar {
+  margin: 20px;
+  
+}
