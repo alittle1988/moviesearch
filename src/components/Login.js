@@ -9,8 +9,11 @@ export default function Login(props) {
   function handleSubmit(e) {
     e.preventDefault()
     login(details)
+    setDetails({userName: "", password: ""})
+    onShowLoginClick()
     
   }
+  
   return (
     <>
     <div className="Login">
@@ -43,8 +46,10 @@ export default function Login(props) {
           ></Form.Control>
         </Form.Group>
         <Button style={{marginTop: 15}} type="submit">Login</Button>
+       
         
       </Form>
+      
     </div>
     </>
   );

@@ -37,7 +37,7 @@ function sortList(list) {
 function App() {
   const [admin, setAdmin] = useState("admin123");
   const [adminPass, setAdminPass] = useState("Password");
-  const [loggedin, setLoggedin] = useState(true);
+  const [loggedin, setLoggedin] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [movie, setMovie] = useState("");
   const [categories, setCategories] = useState(JSON.parse(localStorage.getItem("categories")) || [
@@ -171,7 +171,7 @@ function App() {
     },
   ]);
 
-  console.log(categories)
+  
   // handle login
   function login(details) {
     if (admin === details.userName && adminPass === details.password) {
@@ -179,6 +179,10 @@ function App() {
     } else {
       console.log("shits wrong");
     }
+  }
+
+  function logOut() {
+    setLoggedin(false)
   }
 
   // sort list alphabetical order
@@ -239,7 +243,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header login={login} />
+      <Header login={login} loggedin={loggedin} logout={logOut}/>
       {loggedin === true ? (
         <AdminPage
           onHandleAddMovieTitle={handleAddMovieTitle}
