@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import Category from "./Categorys/Category";
 
 function SearchBar(props) {
@@ -8,7 +8,6 @@ function SearchBar(props) {
   const { moviesList, onMovieClick } = props;
 
   function searchTitleFunc(searchtext) {
-    console.log(searchtext);
     setSearchTitle(searchtext)
     let data = moviesList;
     let newData = [];
@@ -24,7 +23,6 @@ function SearchBar(props) {
     }
     
   }
-  console.log(searchList);
 
   return (
     <div className="searchBar">

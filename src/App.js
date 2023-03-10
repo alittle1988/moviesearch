@@ -5,7 +5,7 @@ import CategoryList from "./components/Categorys/CategoryList";
 import { Container } from "react-bootstrap";
 import MovieCard from "./components/MovieCard";
 import Category from "./components/Categorys/Category";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MovieInfo from "./components/MovieInfo";
 import AdminPage from "./AdminPages/AdminPage";
 import SearchBar from "./components/SearchBar";
@@ -37,16 +37,16 @@ function sortList(list) {
 function App() {
   const [admin, setAdmin] = useState("admin123");
   const [adminPass, setAdminPass] = useState("Password");
-  const [loggedin, setLoggedin] = useState(false);
+  const [loggedin, setLoggedin] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
   const [movie, setMovie] = useState("");
-  const [categories, setCategories] = useState([
+  const [categories, setCategories] = useState(JSON.parse(localStorage.getItem("categories")) || [
     "Comedy",
     "Action",
     "Horror",
     "Drama",
   ]);
-  const [moviesList, setMoviesList] = useState([
+  const [moviesList, setMoviesList] = useState(JSON.parse(localStorage.getItem("moviesList")) || [
     {
       name: "Pineapple Express",
       img: "https://upload.wikimedia.org/wikipedia/en/c/ca/Pineapple_Express_Poster.jpg",
@@ -171,6 +171,7 @@ function App() {
     },
   ]);
 
+  console.log(categories)
   // handle login
   function login(details) {
     if (admin === details.userName && adminPass === details.password) {
@@ -205,6 +206,7 @@ function App() {
 
   // add movie title
   function handleAddMovieTitle(movie) {
+    
     setMoviesList([...moviesList, movie]);
   }
 
@@ -212,17 +214,28 @@ function App() {
   function handleRemoveMovieTitle(title) {
     
     const data = moviesList.filter((movie) => movie.name.toLowerCase() !== title.toLowerCase())
-    console.log(data)
     setMoviesList(data)
+    alert("Title has been removed!")
     
   }
 
-  // edit title
-  function handleEditTitleClick(title) {
+  // edit title not finished
+   function handleEditTitleClick(list, movie) {
+    setMoviesList(list)
+    setMovie(movie)
+    toShowInfo()
+    window.scrollTo(0, 0)
+    alert("Title has be Edited")
     
-  }
 
+  } 
   
+  console.log(moviesList)
+  useEffect(() => {
+    localStorage.setItem("moviesList", JSON.stringify(moviesList));
+    localStorage.setItem("categories", JSON.stringify(categories));
+
+  },[moviesList, categories])
 
   return (
     <div className="App">
@@ -233,6 +246,7 @@ function App() {
           onHandleAddCategory={handleAddCategory}
           onHandleRemoveMovieTitle={handleRemoveMovieTitle}
           onHandleRemoveCategory={handleRemoveCategory}
+          onHandleEditTitleClick={handleEditTitleClick}
           categories={categories}
           moviesList={moviesList}
         />

@@ -6,13 +6,14 @@ function RemoveCategory(props) {
   const { onHandleRemoveCategory, categories } = props;
   console.log(removeCategory);
 
-  function removeCategoryFunc(param) {
-    console.log(param);
+  function removeCategoryFunc(e, param) {
+    e.preventDefault()
     onHandleRemoveCategory(param);
     setRemoveCategory("");
   }
   return (
     <div className="removeCategory">
+      <Form onSubmit={(e) => removeCategoryFunc(e, removeCategory)}>
       <Form.Select
         style={{ width: 250, marginLeft: 25, marginTop: 25 }}
         onChange={(e) => setRemoveCategory(e.target.value)}
@@ -28,11 +29,13 @@ function RemoveCategory(props) {
         })}
       </Form.Select>
       <Button
+      type="submit"
         style={{ margin: 20 }}
-        onClick={() => removeCategoryFunc(removeCategory)}
+        
       >
         Submit
       </Button>
+      </Form>
     </div>
   );
 }

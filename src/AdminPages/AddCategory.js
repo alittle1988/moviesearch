@@ -4,25 +4,26 @@ import { Button, Form } from "react-bootstrap";
 function AddCategory(props) {
   const [newCategory, setNewCategory] = useState("");
   const { onHandleAddCategory, categories } = props;
-  console.log(newCategory);
-  const addCategory = (category) => {
+
+  function addNewCategory(e, category) {
+    e.preventDefault()
     let match = false;
     categories.forEach((item) => {
-      if(item.toLowerCase() === category.toLowerCase()) {
-        match = true; 
+      if (item.toLowerCase() === category.toLowerCase()) {
+        match = true;
       }
-    })
-    if(match === true) {
-      return alert("This Category has already been added!")
+    });
+    if (match === true) {
+      return alert("This Category has already been added!");
     } else {
-        onHandleAddCategory(category);
-        setNewCategory("");
+      onHandleAddCategory(category);
+      setNewCategory("");
     }
-  };
+  }
 
   return (
     <div className="addCategory">
-      <Form>
+      <Form onSubmit={(e) => addNewCategory(e, newCategory)}>
         <Form.Group>
           <Form.Label>Enter Category</Form.Label>
           <Form.Control
@@ -33,12 +34,7 @@ function AddCategory(props) {
             type="text"
             placeholder="Category Name"
           />
-          <Button
-            type="button"
-            onClick={() => addCategory(newCategory)}
-            variant="primary"
-            style={{ marginTop: 20 }}
-          >
+          <Button type="submit" style={{ marginTop: 20 }}>
             Add Category
           </Button>
         </Form.Group>
@@ -48,3 +44,5 @@ function AddCategory(props) {
 }
 
 export default AddCategory;
+
+//trying to figure out why preventDefault is not working but does on addTitle

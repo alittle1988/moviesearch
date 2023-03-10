@@ -166,6 +166,31 @@ html {
   cursor: pointer;
 }
 
+.addTitle {
+  width: 95%;
+  margin: auto;
+}
+
+.addCategory {
+  width: 95%;
+  margin: auto;
+}
+
+.removeCategory {
+  width: 95%;
+  margin: auto;
+}
+
+.removeTitle {
+  width: 95%;
+  margin: auto;
+}
+
+.editTitle {
+  width: 90%;
+  margin: auto;
+}
+
 /* Search Bar */
 
 .searchBar {

@@ -11,12 +11,10 @@ export default function MovieInfo(props) {
   }
 
   function checkData(data) {
-    console.log(data)
-    
-    if(data.length > 0) {
-      return data
+    if (data.length > 0) {
+      return data;
     } else {
-      return "N/A"
+      return "N/A";
     }
   }
 

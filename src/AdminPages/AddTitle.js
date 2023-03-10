@@ -2,35 +2,66 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
 function AddTitle(props) {
+  const [showDetail, setShowDetail] = useState(false)
+  const [movieIndex, setMovieIndex] = useState(null)
+  const [titleExist, setTitleExist] = useState(false)
   const [movieDetails, setMovieDetails] = useState({
     name: "",
-    category: "",
-    director: "",
-    screenplay: "",
-    producers: "",
-    cast: [],
-    releaseDate: "",
-    runtime: "",
-    budget: "",
-    boxOffice: "",
-    summary: "",
-    link: "",
-    likes: 0,
-    review: "",
+      img:"",
+      category: "",
+      director: "",
+      screenplay: "",
+      producers: "",
+      cast: [],
+      releaseDate: "",
+      runtime: "",
+      budget: "",
+      boxOffice: "",
+      summary: "",
+      link: "",
+      likes: 0,
+      review: ""
   });
-  const { addMovieTitle, moviesList } = props;
-  console.log(movieDetails);
-
-  function addTheTitle(movie) {
-    let match = false;
-    moviesList.forEach((item) => {
-      if(item.name.toLowerCase() === movie.name.toLowerCase()) {
-        match = true;
+  const { addMovieTitle, moviesList, onHandleEditTitleClick } = props;
+  
+  function checkTitleMatch(e, title) {
+    e.preventDefault()
+    setShowDetail(true)
+    moviesList.forEach((movie, index) => {
+      if(movie.name.toLowerCase() === title.name.toLowerCase()) {
+        if( window.confirm("Movie alread exit! Would you like to Edit Movie?")) {
+          setTitleExist(true)
+          setMovieIndex(index)
+          setMovieDetails({
+            name: movie.name,
+            img: movie.img,
+            category: movie.category,
+            director: movie.director,
+            screenplay: movie.screenplay,
+            producers: movie.producers,
+            cast: movie.cast,
+            releaseDate: movie.releaseDate,
+            runtime: movie.runtime,
+            budget: movie.budget,
+            boxOffice: movie.boxOffice,
+            summary: movie.summary,
+            link: movie.link,
+            review: movie.review
+          })
+        } else {
+          setShowDetail(false)
+        }
+        
       }
     })
-    if(match === true) {
-      return alert("This Movie has already been added, please check title!")
-    }
+  };
+  console.log(movieIndex)
+  console.log(showDetail)
+
+  function addTheTitle(e, movie) {
+    e.preventDefault()
+    console.log("hellow")
+    if(titleExist === false) {
     addMovieTitle(movie);
     alert("Movie has been added");
     setMovieDetails({
@@ -50,11 +81,37 @@ function AddTitle(props) {
       likes: 0,
       review: "",
     });
+  } else {
+    let newList = moviesList;
+    newList.splice(movieIndex, 1, movieDetails)
+    onHandleEditTitleClick(newList, movieDetails);
+    setMovieDetails({
+      name: "",
+      img:"",
+      category: "",
+      director: "",
+      screenplay: "",
+      producers: "",
+      cast: [],
+      releaseDate: "",
+      runtime: "",
+      budget: "",
+      boxOffice: "",
+      summary: "",
+      link: "",
+      likes: 0,
+      review: ""
+    })
+    setMovieIndex(null)
+    setShowDetail(false)
+    
+  }
   }
 
-  return (
+  return (<>
+    { showDetail === true ?(
     <div className="addTitle">
-      <Form>
+      <Form onSubmit={(e) => addTheTitle(e, movieDetails)}>
         <Form.Group>
           <Form.Label style={{ color: "white", marginLeft: 50 }}>
             Moive Info
@@ -215,16 +272,43 @@ function AddTitle(props) {
           />
         </Form.Group>
         <Button
-          onClick={() => addTheTitle(movieDetails)}
+          
           variant="primary"
-          type="button"
+          type="submit"
           style={{ marginTop: 20 }}
         >
           Submit
         </Button>
       </Form>
+    </div>) :
+    (
+      <div className="editTitle">
+      <Form onSubmit={(e) => checkTitleMatch(e, movieDetails)}>
+        <Form.Group>
+          <Form.Label style={{ color: "white" }}>Title to Add/Edit</Form.Label>
+          <Form.Control
+            onChange={(e) => setMovieDetails({ ...movieDetails, name: e.target.value})}
+            value={movieDetails.name}
+            type="text"
+            placeholder="Title"
+          ></Form.Control>
+          <Button
+            type="submit"
+   
+            style={{ marginTop: 20 }}
+          >
+            Submit
+          </Button>
+        </Form.Group>
+      </Form>
     </div>
-  );
+    )}
+  </>);
 }
 
 export default AddTitle;
+
+
+/// left off making movie update after editing movies
+
+// for editTitle button /* onClick={() => checkTitleMatch(movieDetails)} */
