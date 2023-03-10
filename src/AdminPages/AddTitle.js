@@ -61,7 +61,6 @@ function AddTitle(props) {
 
   function addTheTitle(e, movie) {
     e.preventDefault()
-    console.log("hellow")
     if(titleExist === false) {
     addMovieTitle(movie);
     alert("Movie has been added");
@@ -85,6 +84,7 @@ function AddTitle(props) {
     setShowDetail(false)
     window.scrollTo(0, 0)
   } else {
+    
     let newList = moviesList;
     newList.splice(movieIndex, 1, movieDetails)
     onHandleEditTitleClick(newList, movieDetails);
@@ -117,7 +117,7 @@ function AddTitle(props) {
     <div className="addTitle">
       <Form onSubmit={(e) => addTheTitle(e, movieDetails)}>
         <Form.Group>
-          <Form.Label style={{ color: "white", marginLeft: 50 }}>
+          <Form.Label className="movieInfoTitle" style={{ color: "white", marginLeft: 15, fontSize: 30 }}>
             Moive Info
           </Form.Label>
           <Form.Control

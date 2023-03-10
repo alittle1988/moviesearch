@@ -103,12 +103,14 @@ html {
 .movieContainer {
   white-space: nowrap;
   overflow: scroll;
+  
 }
 
 .movieRow {
   display: inline-flex;
   overflow:scroll;
   white-space: nowrap;
+  width: 100%;
 }
 
 .movieImg :hover{
@@ -176,6 +178,7 @@ html {
   width: 95%;
   margin: auto;
 }
+
 
 .addCategory {
   width: 95%;

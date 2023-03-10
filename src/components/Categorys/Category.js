@@ -12,7 +12,7 @@ export default function Category(props) {
       >
         {name}
       </h2>
-      <Container className="movieContainer">
+      <Container fluid className="movieContainer">
         <div className="movieRow">
           {list.map((movie, index) => {
             if (movie.category === name.toLowerCase() || name.toLowerCase() === "search" || name.toLowerCase() === "delete") {

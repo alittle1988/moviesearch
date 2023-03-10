@@ -260,7 +260,7 @@ function App() {
       <SearchBar moviesList={moviesList}  onMovieClick={handleMovieClick} />
       <CategoryList list={categories} />
       <h2 className="categoryTitle">A-Z</h2>
-      <Container className="movieContainer">
+      <Container fluid className="movieContainer">
         <div className="movieRow">
           {moviesList.map((movie, index) => (
             <MovieCard
