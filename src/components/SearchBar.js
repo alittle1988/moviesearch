@@ -45,4 +45,4 @@ function SearchBar(props) {
 
 export default SearchBar;
 
-/// CREATING SEARCH BAR TO DISPLAY MOVIES WITH NAMES THAT CONTAIN SEARCH CRITERIA
+

@@ -48,6 +48,7 @@ function AddTitle(props) {
             link: movie.link,
             review: movie.review
           })
+          
         } else {
           setShowDetail(false)
         }
@@ -81,6 +82,8 @@ function AddTitle(props) {
       likes: 0,
       review: "",
     });
+    setShowDetail(false)
+    window.scrollTo(0, 0)
   } else {
     let newList = moviesList;
     newList.splice(movieIndex, 1, movieDetails)
@@ -104,6 +107,7 @@ function AddTitle(props) {
     })
     setMovieIndex(null)
     setShowDetail(false)
+    window.scrollTo(0, 0)
     
   }
   }

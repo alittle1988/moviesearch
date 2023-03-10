@@ -213,7 +213,7 @@ function App() {
   // remove movie title
   function handleRemoveMovieTitle(title) {
     
-    const data = moviesList.filter((movie) => movie.name.toLowerCase() !== title.toLowerCase())
+    const data = moviesList.filter((movie) => movie.name.toLowerCase() !== title.name.toLowerCase())
     setMoviesList(data)
     alert("Title has been removed!")
     

@@ -15,7 +15,7 @@ export default function Category(props) {
       <Container className="movieContainer">
         <div className="movieRow">
           {list.map((movie, index) => {
-            if (movie.category === name.toLowerCase() || name.toLowerCase() === "search") {
+            if (movie.category === name.toLowerCase() || name.toLowerCase() === "search" || name.toLowerCase() === "delete") {
               return (
                 <MovieCard
                   onMovieClick={movie => onMovieClick(movie)}
@@ -23,6 +23,8 @@ export default function Category(props) {
                   key={index}
                 ></MovieCard>
               );
+            }else {
+              return <div key={index}></div>
             }
           }
           )}

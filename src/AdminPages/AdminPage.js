@@ -62,6 +62,7 @@ function AdminPage(props) {
           element={
             <RemoveTitle
               onHandleRemoveMovieTitle={onHandleRemoveMovieTitle}
+              moviesList={moviesList}
             ></RemoveTitle>
           }
         />
