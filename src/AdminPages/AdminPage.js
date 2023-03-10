@@ -5,7 +5,6 @@ import AddTitle from "./AddTitle";
 import AddCategory from "./AddCategory";
 import RemoveTitle from "./RemoveTitle";
 import RemoveCategory from "./RemoveCategory";
-import EditTitle from "./EditTitle";
 
 function AdminPage(props) {
   const {
