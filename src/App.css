@@ -71,14 +71,17 @@ html {
 }
 
 .categoryList {
+  font-size: 1.25rem;
   background-color: black;
   display: flex;
-  justify-content:space-around;
+  justify-content:space-evenly;
   list-style: none;
   margin-top: 50px;
   width: 95%;
+}
 
- 
+.categoryLink {
+  text-decoration: none;
 }
 
 .categoryList li:hover {

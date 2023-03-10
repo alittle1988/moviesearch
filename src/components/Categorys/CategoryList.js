@@ -7,8 +7,8 @@ export default function CategoryList(props) {
         <ul className="categoryList">
             {props.list.map((item, index) => {
               return(
-              <li key={index}>
-                <a href={`#${item.toLowerCase()}`} className="text-white" >{item}</a>
+              <li className="categoryLi" key={index}>
+                <a href={`#${item.toLowerCase()}`} className="text-white categoryLink" >{item}</a>
               </li>)
             })}
         </ul>
